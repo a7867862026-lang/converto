@@ -2,41 +2,125 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Order Formatter</title>
+
 <style>
-body { font-family: Arial; padding: 20px; background:#f4f4f4; }
-textarea { width:100%; height:180px; padding:10px; }
-button { width:100%; padding:10px; margin-top:5px; border:none; font-size:16px; cursor:pointer; }
-.generate { background:green; color:white; }
-.copy { background:blue; color:white; }
-#result { background:white; padding:15px; margin-top:15px; white-space:pre-line; }
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 15px;
+    background: #f4f4f4;
+    margin: 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 180px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    resize: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.generate {
+    background: green;
+    color: white;
+}
+
+.copy {
+    background: blue;
+    color: white;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#result {
+    background: #fafafa;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    white-space: pre-line;
+    font-size: 15px;
+    border: 1px solid #eee;
+}
+
+/* Extra mobile optimization */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+
+    textarea {
+        height: 160px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 10px;
+    }
+}
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <h2>Fixed Format Order Generator</h2>
 
-<textarea id="rawData" placeholder="Enter 7 lines:
+<textarea id="rawData" placeholder="Enter 8 lines:
 1 Name
 2 Contact
 3 Address
 4 Zip
 5 Item
-6 color
-8 Price
-9 Date"></textarea>
+6 Color
+7 Price
+8 Date"></textarea>
 
 <button class="generate" onclick="processData()">Generate</button>
 <button class="copy" onclick="copyText()">Copy</button>
 
 <div id="result"></div>
 
+</div>
+
 <script>
 function processData() {
     var text = document.getElementById("rawData").value;
 
-    // Split lines and remove empty lines
     var lines = text.split("\n").map(line => line.trim()).filter(line => line !== "");
 
     var name = lines[0] || "";
@@ -49,14 +133,14 @@ function processData() {
     var date = lines[7] || "";
 
     var result =
-"✅Name : " + name + "\n\n" +
-"✅Order : " + item + "\n\n" +
-"✅Colour : " + color + "\n\n" +
-"✅Address : " + address + "\n\n" +
-"✅Zip Code : " + zip + "\n\n" +
-"✅Contact : " + contact + "\n\n" +
-"✅Price : $" + price + "\n\n" +
-"✅Date : " + date;
+"✅ Name : " + name + "\n\n" +
+"✅ Order : " + item + "\n\n" +
+"✅ Colour : " + color + "\n\n" +
+"✅ Address : " + address + "\n\n" +
+"✅ Zip Code : " + zip + "\n\n" +
+"✅ Contact : " + contact + "\n\n" +
+"✅ Price : $" + price + "\n\n" +
+"✅ Date : " + date;
 
     document.getElementById("result").innerText = result;
 }
@@ -67,7 +151,6 @@ function copyText() {
     alert("Copied Successfully ✅");
 }
 </script>
-
 
 </body>
 </html>
