@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Smart Order Formatter</title>
+<style>
+body { font-family: Arial; padding: 20px; background:#f4f4f4; }
+textarea { width:100%; height:180px; padding:10px; }
+button { width:100%; padding:10px; margin-top:5px; border:none; font-size:16px; cursor:pointer; }
+.generate { background:green; color:white; }
+.copy { background:blue; color:white; }
+#result { background:white; padding:15px; margin-top:15px; white-space:pre-line; }
+</style>
+</head>
+
+<body>
+
+<h2>Fixed Format Order Generator</h2>
+
+<textarea id="rawData" placeholder="Enter 7 lines:
+1 Name
+2 Contact
+3 Address
+4 Zip
+5 Item
+6 color
+8 Price
+9 Date"></textarea>
+
+<button class="generate" onclick="processData()">Generate</button>
+<button class="copy" onclick="copyText()">Copy</button>
+
+<div id="result"></div>
+
+<script>
+function processData() {
+    var text = document.getElementById("rawData").value;
+
+    // Split lines and remove empty lines
+    var lines = text.split("\n").map(line => line.trim()).filter(line => line !== "");
+
+    var name = lines[0] || "";
+    var contact = lines[1] || "";
+    var address = lines[2] || "";
+    var zip = lines[3] || "";
+    var item = lines[4] || "";
+    var color = lines[5] || "";
+    var price = lines[6] || "";
+    var date = lines[7] || "";
+
+    var result =
+"✅Name : " + name + "\n\n" +
+"✅Order : " + item + "\n\n" +
+"✅Colour : " + color + "\n\n" +
+"✅Address : " + address + "\n\n" +
+"✅Zip Code : " + zip + "\n\n" +
+"✅Contact : " + contact + "\n\n" +
+"✅Price : $" + price + "\n\n" +
+"✅Date : " + date;
+
+    document.getElementById("result").innerText = result;
+}
+
+function copyText() {
+    var text = document.getElementById("result").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Copied Successfully ✅");
+}
+</script>
+
+
+</body>
+</html>
