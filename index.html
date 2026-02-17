@@ -102,8 +102,8 @@ button:active {
 
 <textarea id="rawData" placeholder="Enter 8 lines:
 1 Name
-2 Contact
-3 Address
+2 Address
+3 Contact
 4 Zip
 5 Item
 6 Color
@@ -124,8 +124,8 @@ function processData() {
     var lines = text.split("\n").map(line => line.trim()).filter(line => line !== "");
 
     var name = lines[0] || "";
-    var contact = lines[1] || "";
-    var address = lines[2] || "";
+    var Address = lines[1] || "";
+    var Contact = lines[2] || "";
     var zip = lines[3] || "";
     var item = lines[4] || "";
     var color = lines[5] || "";
@@ -154,4 +154,5 @@ function copyText() {
 
 </body>
 </html>
+
 
