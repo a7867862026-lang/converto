@@ -75,21 +75,10 @@ button:active {
     border: 1px solid #eee;
 }
 
-/* Extra mobile optimization */
 @media (max-width: 480px) {
-    h2 {
-        font-size: 18px;
-    }
-
-    textarea {
-        height: 160px;
-        font-size: 14px;
-    }
-
-    button {
-        font-size: 15px;
-        padding: 10px;
-    }
+    h2 { font-size: 18px; }
+    textarea { height: 160px; font-size: 14px; }
+    button { font-size: 15px; padding: 10px; }
 }
 </style>
 </head>
@@ -103,8 +92,8 @@ button:active {
 <textarea id="rawData" placeholder="Enter 8 lines:
 1 Name
 2 Address
-3 Contact
-4 Zip
+3 Zip
+4 Contact
 5 Item
 6 Color
 7 Price
@@ -124,9 +113,9 @@ function processData() {
     var lines = text.split("\n").map(line => line.trim()).filter(line => line !== "");
 
     var name = lines[0] || "";
-    var Address = lines[1] || "";
-    var Contact = lines[2] || "";
-    var zip = lines[3] || "";
+    var address = lines[1] || "";
+    var zip = lines[2] || "";
+    var contact = lines[3] || "";
     var item = lines[4] || "";
     var color = lines[5] || "";
     var price = lines[6] || "";
@@ -154,5 +143,3 @@ function copyText() {
 
 </body>
 </html>
-
-
